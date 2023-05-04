@@ -17,11 +17,7 @@ export const pureAddUser = (name: string, setError: Function, setName: Function,
 }
 
 export const pureOnBlur = (name: string, setError: Function) => {
-    // if залезаем, если true
-    // '' === false
-    // !false === true
-
-    if (!name.trim()){
+        if (!name.trim()){
         setError("Ошибка! Введите имя!")
     }// если имя пустое - показать ошибку
 }
@@ -61,7 +57,7 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
     }
 
     const totalUsers = users.length // need to fix
-    const lastUserName = 'some name' // need to fix
+    const lastUserName = totalUsers? users[users.length-1].name : ''// need to fix
 
     return (
         <Greeting
