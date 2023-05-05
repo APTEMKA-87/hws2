@@ -7,24 +7,25 @@ type GreetingContainerPropsType = {
     addUserCallback: (name: string) => void // need to fix any
 }
 
-export const pureAddUser = (name: string, setError: Function, setName: Function, addUserCallback: (name: string)=>void) => {
-   if (!name.trim()){
-       setError("Ошибка! Введите имя!")
-   } else {
-       addUserCallback(name)
-       setName('')
-       setError(null)
-   }// если имя пустое - показать ошибку, иначе - добавить юзера и очистить инпут
+export const pureAddUser = (name: string, setError: Function, setName: Function, addUserCallback: (name: string) => void) => {
+    if (!name.trim()) {
+        setError("Ошибка! Введите имя!")
+    } else {
+        addUserCallback(name)
+        setName('')
+        //   setError(null)
+    }// если имя пустое - показать ошибку, иначе - добавить юзера и очистить инпут
 }
 
 export const pureOnBlur = (name: string, setError: Function) => {
-        if (!name.trim()){
+    setError(null)
+    if (!name.trim()) {
         setError("Ошибка! Введите имя!")
     }// если имя пустое - показать ошибку
 }
 
 export const pureOnEnter = (e: KeyboardEvent<HTMLInputElement>, addUser: Function) => {
-    if (e.key === 'Enter'){
+    if (e.key === 'Enter') {
         addUser()
     }// если нажата кнопка Enter - добавить
 }
@@ -42,8 +43,8 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
     const [error, setError] = useState<string>('') // need to fix any
 
     const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => {
-            setName(e.currentTarget.value)
-        }
+        setName(e.currentTarget.value)
+    }
 
     const addUser = () => {
         pureAddUser(name, setError, setName, addUserCallback)
@@ -58,7 +59,7 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
     }
 
     const totalUsers = users.length // need to fix
-    const lastUserName = totalUsers? users[users.length-1].name : ''// need to fix
+    const lastUserName = totalUsers ? users[users.length - 1].name : ''// need to fix
 
     return (
         <Greeting
